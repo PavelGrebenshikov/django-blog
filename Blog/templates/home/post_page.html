@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load home_tags %}
+{% block content %}
+<section class="main">
+            {% show_category %}
+           <div class="container_posts">
+               <div class="posts">
+                   {% for Post in PostsDetail %}
+                   <div class="wrapper-post">
+                       <div class="posts-title">
+                           <p>
+                               <a href="{{ Post.get_absolute_url }}">
+                                   {{ Post.title }}
+                                </a>
+                            </p>
+                       </div>
+                       <div class="posts-text">
+                           <p>{{ Post.text }}</p>
+                       </div>
+                       <div class="date-published">
+                           <p>Автор: {{ Post.author }} || Дата создания: {{ Post.create_date }}</p>
+                       </div>
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+   </section>
+{% endblock content %}

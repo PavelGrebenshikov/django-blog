@@ -1,0 +1,12 @@
+<div class="container_category">
+    <div class="category">
+        <div class="title-category">
+            <p class="p-category">This is Category</p>
+        </div>
+        {% for category in Category %}
+        <div class="category_link">
+                <a href="{{ category.get_absolute_url }}">{{ category.category }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>

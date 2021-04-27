@@ -1,0 +1,51 @@
+.wrapper-signup {
+    margin: 0px auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+.signup {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    width: 50%;
+    height: 30%;
+}
+.signup-title {
+    text-align: center;
+    color: rebeccapurple;
+}
+
+
+/* Форма изменение текста */
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    text-align: center;
+}
+input {
+  box-sizing: border-box;
+  margin-left: 30%;
+  height: 35px;
+  border: 2px solid rebeccapurple;
+  border-radius: 5px;
+}
+button {
+    height: 100px;
+}
+button:hover {
+    background-color: rebeccapurple;
+    color: white;
+}
+.helptext {
+    font-size: 12px;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+}
