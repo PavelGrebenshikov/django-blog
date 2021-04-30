@@ -15,7 +15,7 @@
                             </p>
                        </div>
                        <div class="posts-text">
-                           <p>{{ Post.text }}</p>
+                           <p>{{ Post.text|safe }}</p>
                        </div>
                        <div class="date-published">
                            <p>Автор: {{ Post.author }} || Дата создания: {{ Post.create_date }}</p>

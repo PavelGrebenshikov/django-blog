@@ -30,8 +30,11 @@ label {
     text-align: center;
 }
 input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-left: 30%;
+  width: 40%;
   height: 35px;
   border: 2px solid rebeccapurple;
   border-radius: 5px;

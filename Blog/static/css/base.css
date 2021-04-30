@@ -28,6 +28,9 @@ header {
     text-align: center;
     width: 150px;
 }
+.item_menu > .link-login-in:hover, .link-sign-up:hover {
+    color: white;
+}
 .main {
     display: flex;
     flex-direction: row;
@@ -54,7 +57,7 @@ header {
     height: 30px;
 }
 .container_posts {
-    width: 70%;
+    width: 69%;
 }
 .container_posts > .posts {
     text-align: center;
