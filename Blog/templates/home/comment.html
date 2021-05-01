@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load home_tags %}
+{% block content %}
+
+<div class="container-form">
+    <div class="wrapper-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="submit-button" type="submit" value="Оставить комментарий">
+        </form>
+    </div>
+</div>
+
+<style>
+    .container-form {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+    .wrapper-form {
+        display: flex;
+        justify-content: center;
+    }
+    .submit-button:hover {
+        background-color: rebeccapurple;
+        color: white;
+    }
+    #id_post {
+        width: 100%;
+        text-align: center;
+    }
+    input {
+        width: 70%;
+        margin-left: 15%;
+    }
+</style>
+
+{% endblock content %}

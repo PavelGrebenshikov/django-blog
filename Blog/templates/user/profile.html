@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load home_tags %}
+{% block content %}
+
+<section>
+    <div class="container-profile">
+       <div class="profile-account">
+        <div class="profile-title">
+            <h2>Ваш профиль</h2>
+        </div>
+        {% for user in User %}
+            <div class="about-profile-user">
+                <h4>Данные о пользователе:</h4>
+            </div>
+            <div class="profile-user">
+                <span>Ваш логин: <a href="#"><b>{{ user.user }}</b></a></span>
+            </div>
+            <div class="profile-username">
+                <span>Ваше имя: {{ user.username }}</span>
+            </div>
+            <div class="profile-surname">
+                <span>Ваша фамилия: {{ user.surname }}</span>
+            </div>
+        {% endfor %}
+       </div>
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+    .container-profile {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .profile-account {
+        width: 70%;
+        height: auto;
+    }
+    .profile-title {
+        text-align: center;
+    }
+    .about-profile-user {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+
+{% endblock content %}

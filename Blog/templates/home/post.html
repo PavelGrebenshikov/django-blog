@@ -25,6 +25,15 @@
            </div>
    </section>
    <section>
+    <div class="comments">
+        <div class="wrapper-comments">
+                <a href="{% url 'view_comment' %}">
+                    <h3 class="comment-answer" style="text-align: center;" >
+                        Ответить на пост
+                    </h3>
+                </a>
+        </div>
+    </div>
         <div class="comments">
             {% if user.is_authenticated %}
                 {% for comment in Comments %}

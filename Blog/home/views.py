@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 from .models import Posts, Category, Comments
+from .forms import CommentForm
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -28,3 +32,15 @@ class PostsID(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         return {"Posts": Posts.objects.filter(id=self.kwargs['pk']), "Comments": Comments.objects.all()}
+
+@login_required
+@require_http_methods("POST")
+def view_comment(request):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/home/")
+    else:
+        form = CommentForm()
+    return render(request, 'home/comment.html', {"form": form})
