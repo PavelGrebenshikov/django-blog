@@ -23,7 +23,7 @@ class Posts(models.Model):
     author = models.CharField("Имя автора", max_length=100, blank=False)
     title = models.CharField("Заголовок поста", default="", max_length=100, blank=False)
     text = models.TextField("Содержание поста", blank=False)
-    create_date = models.DateField("Дата создания", auto_created=True)
+    create_date = models.DateField("Дата создания", auto_now_add=True)
     published = models.BooleanField("Опубликовать: ", default=False)
     category_post = models.ForeignKey(Category, verbose_name="Категория поста", null=True, on_delete=models.CASCADE)
 
@@ -36,7 +36,7 @@ class Posts(models.Model):
     class Meta():
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
-        ordering = ['-create_date']
+
 
 class Comments(models.Model):
     post = models.OneToOneField(Posts, related_name="comments", on_delete=models.CASCADE)

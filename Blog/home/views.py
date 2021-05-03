@@ -13,9 +13,10 @@ class PostsView(ListView):
     model = Posts
     context_object_name = "Posts"
     template_name = "home/index.html"
+    ordering = ['-create_date']
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        return {"Category": Category.objects.all(), "Posts": Posts.objects.all()}
+        return {"Category": Category.objects.all(), "Posts": Posts.objects.all().order_by('-create_date')}
 
 class PostsDetail(ListView):
     model = Posts
@@ -41,9 +42,9 @@ def view_comment(request, pk):
     post = get_object_or_404(Posts, pk=pk)
     if request.method == "POST":
         form = CommentForm(data=request.POST)
-        # comment = Comments.objects.filter(object_id=post.id)
         if form.is_valid():
             form = form.save(commit=False)
+            form.name = request.user
             form.post = post
             form.save()
             return HttpResponseRedirect(f"/home/post/{pk}/")
