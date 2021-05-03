@@ -1,17 +1,22 @@
 <header>
     <div class="menu">
         <div class="container_menu">
-            <div class="item_menu"><a href="{% url 'home_page' %}">Home</a></div>
-            <div class="item_menu"><a href="#">Posts</a></div>
-            <div class="item_menu"><a href="#">New</a></div>
-            <div class="item_menu"><a href="#">Hot</a></div>
-            <div class="item_menu"><a href="#">Popular</a></div>
+            <div class="item_menu"><a href="{% url 'home_page' %}">Главная</a></div>
+            <!-- <div class="item_menu"><a href="#">Посты</a></div>
+            <div class="item_menu"><a href="#">Новые</a></div> -->
+            <div class="item_menu"><a href="{% url 'home_page' %}">О блоге</a></div>
             <!-- Временно -->
             {% if not user.is_authenticated %}
-            <div class="item_menu"><a href="{% url 'login' %}">Login In</a></div>
-            <div class="item_menu"><a href="{% url 'signup' %}">Signup</a></div>
+            <div class="item_menu">
+                <a class="link-login-in" href="{% url 'login' %}">Вход</a>
+                    <span>
+                        |
+                    </span>
+                <a class="link-sign-up" href="{% url 'signup' %}">Регистрация</a>
+            </div>
             {% else %}
-            <div class="item_menu"><a href="{% url 'logout' %}">Logout</a></div>
+            <div class="item_menu"><a href="{% url 'Profile' %}">Профиль</a></div>
+            <div class="item_menu"><a href="{% url 'logout' %}">Выход</a></div>
             {% endif %}
         </div>
     </div>

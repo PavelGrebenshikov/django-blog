@@ -27,6 +27,8 @@ header {
 .item_menu {
     text-align: center;
     width: 150px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .item_menu > .link-login-in:hover, .link-sign-up:hover {
     color: white;
