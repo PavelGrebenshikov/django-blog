@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from time import timezone
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ class Posts(models.Model):
     author = models.CharField("Имя автора", max_length=100, blank=False)
     title = models.CharField("Заголовок поста", default="", max_length=100, blank=False)
     text = models.TextField("Содержание поста", blank=False)
-    create_date = models.DateField("Дата создания", auto_now_add=True)
+    create_date = models.DateTimeField("Дата создания", auto_now_add=True)
     published = models.BooleanField("Опубликовать: ", default=False)
     category_post = models.ForeignKey(Category, verbose_name="Категория поста", null=True, on_delete=models.CASCADE)
 
