@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-import time
 # Create your models here.
 
 class Category(models.Model):
@@ -40,7 +39,7 @@ class Posts(models.Model):
         ordering = ['-create_date']
 
 class Comments(models.Model):
-    post = models.ForeignKey(Posts, related_name="comments", on_delete=models.CASCADE)
+    post = models.OneToOneField(Posts, related_name="comments", on_delete=models.CASCADE)
     name = models.CharField("Ваше имя", max_length=100, blank=False)
     text = models.TextField("Поля для вашего текста")
     create_date = models.DateTimeField("Дата создания комментария", auto_now_add=True)

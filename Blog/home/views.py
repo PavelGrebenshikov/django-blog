@@ -36,12 +36,17 @@ class PostsID(ListView):
         return {"Posts": Posts.objects.filter(id=self.kwargs['pk']), "Comments": Comments.objects.filter(post=post)}
 
 @login_required
-def view_comment(request):
+def view_comment(request, pk):
+    template_name = 'home/comment.html'
+    post = get_object_or_404(Posts, pk=pk)
     if request.method == "POST":
-        form = CommentForm(request.POST)
+        form = CommentForm(data=request.POST)
+        # comment = Comments.objects.filter(object_id=post.id)
         if form.is_valid():
             form = form.save(commit=False)
-            return HttpResponseRedirect("/home/")
+            form.post = post
+            form.save()
+            return HttpResponseRedirect(f"/home/post/{pk}/")
     else:
         form = CommentForm()
-    return render(request, 'home/comment.html', {"form": form})
+    return render(request, template_name, {"form": form})
