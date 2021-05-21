@@ -9,4 +9,16 @@
         </div>
         {% endfor %}
     </div>
+    <div class="container_side-bar">
+        <div class="wrapper_side-bar">
+            <div class="main">
+                Различные ресурсы
+            </div>
+            {% for resources in Resources %}
+            <ul>
+                <li><a href="#">{{ resources.title }}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
 </div>

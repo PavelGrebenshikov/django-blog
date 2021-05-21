@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
-from .models import Posts, Category, Comments
+from .models import Posts, Category, Comments, Resources
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -16,7 +16,8 @@ class PostsView(ListView):
     ordering = ['-create_date']
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        return {"Category": Category.objects.all(), "Posts": Posts.objects.all().order_by('-create_date')}
+        return {"Category": Category.objects.all(),
+                "Posts": Posts.objects.all().order_by('-create_date')}
 
 class PostsDetail(ListView):
     model = Posts

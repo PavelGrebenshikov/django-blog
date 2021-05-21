@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import related
 from django.urls import reverse
 from time import timezone
 
@@ -37,15 +38,28 @@ class Posts(models.Model):
     class Meta():
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
+        ordering = ['-create_date']
 
 
 class Comments(models.Model):
     post = models.OneToOneField(Posts, related_name="comments", on_delete=models.CASCADE)
     name = models.CharField("Ваше имя", max_length=100, blank=False)
-    text = models.TextField("Поля для вашего текста")
+    text = models.TextField("Поле для вашего комментария")
     create_date = models.DateTimeField("Дата создания комментария", auto_now_add=True)
     
     class Meta():
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
         ordering = ['-create_date']
+
+
+class Resources(models.Model):
+    title = models.CharField("Название ресурса", max_length=128)
+    link = models.CharField("Ссылка на ресурс", max_length=128, default="#")
+
+    def __str__(self):
+        return self.title
+
+    class Meta():
+        verbose_name = "Ресурс"
+        verbose_name_plural = "Ресурсы"

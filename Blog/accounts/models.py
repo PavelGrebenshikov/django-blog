@@ -12,8 +12,8 @@ def update_profile(sender, instance, **kwargs):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE, verbose_name="Логин пользователя")
-    username = models.CharField(max_length=128, blank=True, default='Test', verbose_name='Имя пользователя')
-    surname = models.CharField(max_length=128, blank=True, default='', verbose_name='Фамилия пользователя')
+    username = models.CharField(max_length=128, blank=True, default=None, verbose_name='Имя пользователя')
+    surname = models.CharField(max_length=128, blank=True, default=None, verbose_name='Фамилия пользователя')
 
     def __str__(self):
         return self.user
