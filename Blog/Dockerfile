@@ -1,6 +1,6 @@
 FROM python:3.8
 
-ENV SECRET_KEY="HEllo"
+ENV SECRET_KEY="SECRET_KET"
 
 WORKDIR /usr/src/my_django
 
