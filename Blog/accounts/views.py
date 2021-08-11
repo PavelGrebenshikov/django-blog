@@ -12,4 +12,4 @@ class SignUpView(CreateView):
 
 def user_profile(request):
     user = User.objects.get(id=request.user.id)
-    return render(request, 'user/profile.html', {"User": Profile.objects.filter(id=request.user.profile.id)})
+    return render(request, 'user/profile.html', {"User": User.objects.filter(id=request.user.id)})
